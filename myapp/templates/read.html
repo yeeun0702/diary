@@ -1,0 +1,23 @@
+{% extends 'main.html' %}
+
+{% block content %}
+ <!-- About-->
+ <section class="content-section bg-light" id="about">
+    <div class="container px-4 px-lg-5 text-center">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-lg-10">
+                <h2>Read</h2>
+                {% for blogs in blogs.all %}
+                <h3>제목 : <a href="{% url 'detail' blogs.id %}">{{blogs.title}}</a></h3>
+                <p>작성일 : {{blogs.pub_date}}</p>
+                <p>내용 : {{blogs.content}}</p>
+                <p>이미지 :  {% if blogs.image %}
+                                <img src="{{ blogs.image.url }}" width = "250" height = "250" alt="image">
+                            {% endif %}                 
+                </p><hr>
+                {% endfor %}          
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
